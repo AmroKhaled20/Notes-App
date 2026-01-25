@@ -29,7 +29,7 @@ class CustomAddnoteBottomsheetWidget extends StatelessWidget {
               ),
               SizedBox(height: 140),
               CustomButtonaddWidget(buttonText: 'Add'),
-              SizedBox(height: 30),
+              SizedBox(height: 20),
             ],
           ),
         ),
