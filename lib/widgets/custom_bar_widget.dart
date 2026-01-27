@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:notes_app/widgets/custom_search_widget.dart';
+import 'package:notes_app/widgets/custom_icon_widget.dart';
 
 class CustomBarWidget extends StatelessWidget {
-  const CustomBarWidget();
-
+  const CustomBarWidget({required this.icon});
+  final IconData icon;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,7 +19,7 @@ class CustomBarWidget extends StatelessWidget {
             style: TextStyle(fontSize: 23, fontWeight: FontWeight.w400),
           ),
 
-          CustomSearchWidget(),
+          CustomIconhWidget(icon: icon),
         ],
       ),
     );
