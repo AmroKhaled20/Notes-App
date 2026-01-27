@@ -5,6 +5,7 @@ import 'package:notes_app/widgets/custom_notecard_widget.dart';
 import 'package:notes_app/widgets/custom_noteslist_widget.dart';
 
 class NotesView extends StatelessWidget {
+  static const String id = 'Notes view';
   const NotesView();
   @override
   Widget build(BuildContext context) {

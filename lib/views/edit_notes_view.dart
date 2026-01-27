@@ -3,6 +3,7 @@ import 'package:notes_app/widgets/custom_bar_widget.dart';
 import 'package:notes_app/widgets/custom_textfield_widget.dart';
 
 class EditNotesView extends StatelessWidget {
+  static const String id = 'Edit view';
   const EditNotesView();
   @override
   Widget build(BuildContext context) {
