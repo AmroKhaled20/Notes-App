@@ -7,7 +7,6 @@ class EditNotesView extends StatelessWidget {
   const EditNotesView();
   @override
   Widget build(BuildContext context) {
-    TextEditingController controller = TextEditingController();
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -16,12 +15,9 @@ class EditNotesView extends StatelessWidget {
             children: [
               CustomBarWidget(icon: Icons.done),
               SizedBox(height: 40),
-              CustomTextFieldWidget(hintText: 'Title', controller: controller),
+              CustomTextFieldWidget(hintText: 'Title'),
               SizedBox(height: 20),
-              CustomTextFieldWidget(
-                hintText: 'Content',
-                controller: controller,
-              ),
+              CustomTextFieldWidget(hintText: 'Content'),
             ],
           ),
         ),
