@@ -29,7 +29,10 @@ class CustomAddnoteBottomsheetWidget extends StatelessWidget {
           return ModalProgressHUD(
             inAsyncCall: state is AddNoteLoading ? true : false,
             progressIndicator: Center(child: const CircularProgressIndicator()),
-            child: AddNoteForm(),
+            child: AbsorbPointer(
+              absorbing: state is AddNoteLoading ? true : false,
+              child: AddNoteForm(),
+            ),
           );
         },
       ),
