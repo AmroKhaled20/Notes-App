@@ -31,7 +31,12 @@ class CustomAddnoteBottomsheetWidget extends StatelessWidget {
             progressIndicator: Center(child: const CircularProgressIndicator()),
             child: AbsorbPointer(
               absorbing: state is AddNoteLoading ? true : false,
-              child: AddNoteForm(),
+              child: Padding(
+                padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom,
+                ),
+                child: AddNoteForm(),
+              ),
             ),
           );
         },

@@ -21,12 +21,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
       height: MediaQuery.of(context).size.height * 0.5,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: SingleChildScrollView(
-          padding: EdgeInsets.only(
-            bottom: MediaQuery.of(context).viewInsets.bottom,
-          ),
-          child: AddNoteForm(),
-        ),
+        child: SingleChildScrollView(child: AddNoteForm()),
       ),
     );
   }
