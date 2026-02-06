@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_notes_view.dart';
 
 class CustomNotecardWidget extends StatelessWidget {
-  const CustomNotecardWidget();
+  final NoteModel noteItem;
+  const CustomNotecardWidget({required this.noteItem});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class CustomNotecardWidget extends StatelessWidget {
           width: double.infinity,
 
           decoration: BoxDecoration(
-            color: Colors.blue,
+            color: Color(noteItem.color),
             borderRadius: BorderRadius.circular(18),
           ),
           child: Padding(
@@ -26,14 +28,14 @@ class CustomNotecardWidget extends StatelessWidget {
               children: [
                 ListTile(
                   contentPadding: EdgeInsets.all(0),
-                  title: const Text('Flutter tibs'),
+                  title: Text(noteItem.title),
                   titleTextStyle: const TextStyle(
                     color: Colors.black,
                     fontSize: 26,
                   ),
                   subtitle: Padding(
                     padding: const EdgeInsets.only(top: 20),
-                    child: const Text('Build your carrier with Amr Khaled'),
+                    child: Text(noteItem.subtitle),
                   ),
                   subtitleTextStyle: TextStyle(
                     color: Colors.black.withAlpha(100),
@@ -50,7 +52,7 @@ class CustomNotecardWidget extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 15, bottom: 2),
                   child: Text(
-                    'Jan,15,2026',
+                    noteItem.date,
                     style: TextStyle(color: Colors.black.withAlpha(100)),
                   ),
                 ),
