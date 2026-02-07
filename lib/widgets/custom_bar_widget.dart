@@ -3,9 +3,14 @@ import 'package:flutter/widgets.dart';
 import 'package:notes_app/widgets/custom_icon_widget.dart';
 
 class CustomBarWidget extends StatelessWidget {
-  const CustomBarWidget({required this.icon, this.colorr = Colors.white});
+  const CustomBarWidget({
+    required this.icon,
+    this.colorr = Colors.white,
+    this.onPressed,
+  });
   final IconData icon;
   final Color? colorr;
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +29,11 @@ class CustomBarWidget extends StatelessWidget {
             ),
           ),
 
-          CustomIconhWidget(icon: icon, iconColor: colorr),
+          CustomIconhWidget(
+            icon: icon,
+            iconColor: colorr,
+            onPressed: onPressed,
+          ),
         ],
       ),
     );

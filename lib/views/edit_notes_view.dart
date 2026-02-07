@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/read_notes_cubit/read_notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/custom_bar_widget.dart';
 import 'package:notes_app/widgets/custom_textfield_widget.dart';
@@ -17,6 +19,7 @@ class _EditNotesViewState extends State<EditNotesView> {
 
   late int noteColor;
   late Color textColor;
+  late NoteModel note;
 
   bool _isLight(Color color) => color.computeLuminance() > 0.5;
 
@@ -24,7 +27,7 @@ class _EditNotesViewState extends State<EditNotesView> {
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    final note = ModalRoute.of(context)!.settings.arguments as NoteModel;
+    note = ModalRoute.of(context)!.settings.arguments as NoteModel;
 
     noteColor = note.color;
     textColor = _isLight(Color(noteColor)) ? Colors.black : Colors.white;
@@ -49,7 +52,17 @@ class _EditNotesViewState extends State<EditNotesView> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              CustomBarWidget(icon: Icons.done, colorr: textColor),
+              CustomBarWidget(
+                icon: Icons.done,
+                colorr: textColor,
+                onPressed: () {
+                  note.title = titleController.text;
+                  note.subtitle = contentController.text;
+                  note.save();
+                  BlocProvider.of<ReadNotesCubit>(context).fetchAllNotes();
+                  Navigator.pop(context);
+                },
+              ),
               const SizedBox(height: 40),
               CustomTextFieldWidget(
                 hintText: 'Title',
