@@ -16,4 +16,9 @@ class ReadNotesCubit extends Cubit<ReadNotesState> {
     final List<NoteModel> notes = notesBox.values.toList();
     emit(ReadNotesSuccess(notes));
   }
+
+  deleteNote(NoteModel note) async {
+    await note.delete();
+    fetchAllNotes();
+  }
 }
