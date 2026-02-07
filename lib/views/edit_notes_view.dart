@@ -5,7 +5,7 @@ import 'package:notes_app/widgets/custom_textfield_widget.dart';
 
 class EditNotesView extends StatefulWidget {
   static const String id = 'Edit view';
-  const EditNotesView();
+  const EditNotesView({super.key});
 
   @override
   State<EditNotesView> createState() => _EditNotesViewState();
@@ -14,14 +14,21 @@ class EditNotesView extends StatefulWidget {
 class _EditNotesViewState extends State<EditNotesView> {
   late TextEditingController titleController;
   late TextEditingController contentController;
+
   late int noteColor;
+  late Color textColor;
+
+  bool _isLight(Color color) => color.computeLuminance() > 0.5;
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    final NoteModel note =
-        ModalRoute.of(context)!.settings.arguments as NoteModel;
+    final note = ModalRoute.of(context)!.settings.arguments as NoteModel;
+
     noteColor = note.color;
+    textColor = _isLight(Color(noteColor)) ? Colors.black : Colors.white;
+
     titleController = TextEditingController(text: note.title);
     contentController = TextEditingController(text: note.subtitle);
   }
@@ -35,27 +42,29 @@ class _EditNotesViewState extends State<EditNotesView> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Color(noteColor),
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+    return Scaffold(
+      backgroundColor: Color(noteColor),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              CustomBarWidget(icon: Icons.done),
-              SizedBox(height: 40),
+              CustomBarWidget(icon: Icons.done, colorr: textColor),
+              const SizedBox(height: 40),
               CustomTextFieldWidget(
                 hintText: 'Title',
                 controller: titleController,
                 minLines: 1,
                 maxLines: 3,
+                textColor: textColor,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               CustomTextFieldWidget(
                 hintText: 'Content',
                 controller: contentController,
                 minLines: 6,
                 maxLines: 6,
+                textColor: textColor,
               ),
             ],
           ),

@@ -3,8 +3,9 @@ import 'package:flutter/widgets.dart';
 import 'package:notes_app/widgets/custom_icon_widget.dart';
 
 class CustomBarWidget extends StatelessWidget {
-  const CustomBarWidget({required this.icon});
+  const CustomBarWidget({required this.icon, this.colorr = Colors.white});
   final IconData icon;
+  final Color? colorr;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,12 +15,16 @@ class CustomBarWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text(
+          Text(
             'Notes',
-            style: TextStyle(fontSize: 23, fontWeight: FontWeight.w400),
+            style: TextStyle(
+              color: colorr,
+              fontSize: 23,
+              fontWeight: FontWeight.w400,
+            ),
           ),
 
-          CustomIconhWidget(icon: icon),
+          CustomIconhWidget(icon: icon, iconColor: colorr),
         ],
       ),
     );

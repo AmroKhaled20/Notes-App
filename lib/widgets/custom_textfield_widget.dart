@@ -8,6 +8,7 @@ class CustomTextFieldWidget extends StatelessWidget {
     this.onSaved,
     this.maxLines = 1,
     this.minLines = 1,
+    this.textColor,
     super.key,
   });
   final String hintText;
@@ -15,6 +16,7 @@ class CustomTextFieldWidget extends StatelessWidget {
   final TextEditingController? controller;
   final int maxLines;
   final int minLines;
+  final Color? textColor;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -27,7 +29,8 @@ class CustomTextFieldWidget extends StatelessWidget {
           return null;
         }
       },
-      cursorColor: kPrimaryColor,
+      cursorColor: textColor ?? kPrimaryColor,
+      style: TextStyle(color: textColor ?? Colors.white),
       keyboardType: TextInputType.multiline,
       maxLines: maxLines,
       minLines: minLines,
