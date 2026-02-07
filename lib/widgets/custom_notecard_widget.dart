@@ -14,7 +14,7 @@ class CustomNotecardWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: GestureDetector(
         onLongPress: () {
-          Navigator.pushNamed(context, EditNotesView.id);
+          Navigator.pushNamed(context, EditNotesView.id, arguments: noteItem);
         },
         child: Container(
           width: double.infinity,

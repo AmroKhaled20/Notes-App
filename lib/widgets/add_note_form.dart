@@ -38,6 +38,8 @@ class _AddNoteFormState extends State<AddNoteForm> {
           const SizedBox(height: 40),
           CustomTextFieldWidget(
             hintText: 'Title',
+            minLines: 1,
+            maxLines: 3,
             onSaved: (value) {
               title = value;
             },
@@ -45,11 +47,13 @@ class _AddNoteFormState extends State<AddNoteForm> {
           const SizedBox(height: 20),
           CustomTextFieldWidget(
             hintText: 'Content',
+            minLines: 5,
+            maxLines: 5,
             onSaved: (value) {
               subtitle = value;
             },
           ),
-          const SizedBox(height: 140),
+          const SizedBox(height: 40),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
               return CustomButtonaddWidget(
